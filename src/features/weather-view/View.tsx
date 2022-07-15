@@ -17,7 +17,7 @@ import { CityCard } from './CityCard';
 import { fetchCityByName } from '../../app/api';
 import { Footer } from './Footer';
 
-export default function Album() {
+export default function View() {
     const cities = useAppSelector(state => Object.keys(state.cities), shallowEqual);
 
     const dispatch = useAppDispatch();

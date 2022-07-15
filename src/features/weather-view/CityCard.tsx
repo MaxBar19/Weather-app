@@ -9,7 +9,9 @@ import Button from '@mui/material/Button';
 import { shallowEqual } from "react-redux";
 import { actions } from "../../app/citiesSlice";
 import { fetchCityById } from '../../app/api';
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import Link from "@mui/material/Link"
+import { Box } from "@mui/material";
 
 export const CityCard = ({ id }: { id: string }) => {
     const city = useAppSelector(s => s.cities[id], shallowEqual);
@@ -32,7 +34,11 @@ export const CityCard = ({ id }: { id: string }) => {
                     </Typography>}
                 </CardContent>
                 <CardActions>
-                    <Link to={`/${city.id}`}>View</Link>
+                    <Box pl={1} pr={2}>
+                        <Link variant="button" underline="none" component={RouterLink} to={`/${city.id}`}>
+                            VIEW
+                        </Link>
+                    </Box>
                     <Button size="small" onClick={() => fetchCityById(id, dispatch)}>Refresh</Button>
                     <Button size="small" onClick={() => dispatch(actions.delete(id))}>Delete</Button>
                 </CardActions>
